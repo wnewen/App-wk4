@@ -10,16 +10,18 @@ const AlbumScreen = ({ navigation }) => {
   return (
     <ScrollView backgroundColor="#fff">
     <Box backgroundColor="#fff"> 
-      <Header />
-      <Text fontSize={24}>Popular Book</Text>
+      {/* <Header /> */}
+      <Text fontSize={24} fontWeight="500" ml="20px" mt="8px">Popular Book</Text>
       <PopularBookList 
         list={albumData.popularBook}
         navigation={navigation}
+        mt="16px"
       />
-      <Text fontSize={24}>Newest Book</Text>
+      <Text fontSize={24} fontWeight="500" ml="20px" mt="16px">Newest Book</Text>
       <NewestBookList 
         list={albumData.newestBook}
         navigation={navigation}
+        mt="16px"
       />
     </Box>
     </ScrollView>
