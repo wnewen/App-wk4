@@ -49,6 +49,12 @@ const MyTabs = () => {
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons name="home" color={color} size={26} />
           ),
+          tabBarIconStyle: {
+            marginTop: 5,
+          },
+          tabBarLabelStyle: {
+            marginBottom: 5 
+          }
         }}
       />
       <Tab.Screen 
@@ -63,6 +69,12 @@ const MyTabs = () => {
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons name="bookmark" color={color} size={26} />
           ),
+          tabBarIconStyle: {
+            marginTop: 5,
+          },
+          tabBarLabelStyle: {
+            marginBottom: 5 
+          }
         }}
       />
       <Tab.Screen 
@@ -77,6 +89,12 @@ const MyTabs = () => {
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons name="book-open" color={color} size={26} />
           ),
+          tabBarIconStyle: {
+            marginTop: 5,
+          },
+          tabBarLabelStyle: {
+            marginBottom: 5 
+          }
         }}
       />
     </Tab.Navigator>
