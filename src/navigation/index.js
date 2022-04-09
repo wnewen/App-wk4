@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, useTheme} from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -10,6 +10,7 @@ import WishlistScreen from '../screens/WishlistScreen';
 import MyBooksScreen from '../screens/MyBooksScreen';
 import { Pressable, Box, Image } from "native-base";
 import { TouchableOpacity, Text } from 'react-native';
+import MyTheme from '../style/MyTheme';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -17,26 +18,30 @@ const Tab = createBottomTabNavigator();
 function Header() {
   return (
     <Box h="24px" w="100%" bg="#fff" display="flex" flexDirection="row" justifyContent="space-between" alignItems="center" >
-        <Image h="40px" w="40px" source={{uri: "https://github.com/wnewen/App-wk3-photoes/blob/main/btn_menu.png?raw=true"}} alt="btn_menu"/>
-        <Image h="40px" w="40px" mr="28px" source={{ uri: "https://github.com/wnewen/App-wk3-photoes/blob/main/btn_search.png?raw=true" }} alt="btn_search"/>
+        <Text fontSize="32px">首頁</Text>
     </Box>
   );
 };
 
 const Navigation = () => {
   return (
-    <NavigationContainer>
+    <NavigationContainer >
       <MyTabs />
     </NavigationContainer>
   );
 }
 
 const MyTabs = () => {
+  const { colors } = useTheme();
+
   return (
     <Tab.Navigator
       initialRouteName="HomeStack"
       screenOptions={{
-        tabBarActiveTintColor: '#6200EE',
+        tabBarActiveTintColor: '#ffb800',
+        tabBarInactiveTintColor: '#B69C85',
+        tabBarActiveBackgroundColor: '#FFEBB9',
+        tabBarInactiveBackgroundColor: '#FFEBB9',
         // headerShown: false
       }}
     >
@@ -97,6 +102,26 @@ const MyTabs = () => {
           }
         }}
       />
+      <Tab.Screen 
+        name="My book" 
+        component={MyBooksScreen} 
+        options={{
+          title: "My books",
+          headerTitleStyle: {
+            fontWeight: '400',
+            fontSize: 20
+          },
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons name="cog" color={color} size={26} />
+          ),
+          tabBarIconStyle: {
+            marginTop: 5,
+          },
+          tabBarLabelStyle: {
+            marginBottom: 5 
+          }
+        }}
+      />
     </Tab.Navigator>
   );
 }
@@ -117,8 +142,13 @@ const HomeStack = () => {
         component={AlbumScreen}
         
         options={{
-          headerTitle: (props) => <Header {...props} />,
+          // headerTitle: (props) => <Header {...props} />,
           headerShadowVisible: false,
+          title: "首頁",
+          headerStyle: {
+            backgroundColor: '#FFEBB9',
+          },
+          headerTintColor: '#70552E',
         }}
       />
       <Stack.Screen
