@@ -11,6 +11,7 @@ import MyBooksScreen from '../screens/MyBooksScreen';
 import { Pressable, Box, Image } from "native-base";
 import { TouchableOpacity, Text } from 'react-native';
 import MyTheme from '../style/MyTheme';
+import HomeScreen from '../screens/HomeScreen';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -50,7 +51,7 @@ const MyTabs = () => {
         component={HomeStack}
         options={{
           headerShown: false,
-          title: "Home",
+          title: "首頁",
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons name="home" color={color} size={26} />
           ),
@@ -66,7 +67,7 @@ const MyTabs = () => {
         name="Wishlist" 
         component={WishlistScreen} 
         options={{
-          title: "Wishlist",
+          title: "分析",
           headerTitleStyle: {
             fontWeight: '400',
             fontSize: 20
@@ -86,7 +87,7 @@ const MyTabs = () => {
         name="My books" 
         component={MyBooksScreen} 
         options={{
-          title: "My books",
+          title: "統計",
           headerTitleStyle: {
             fontWeight: '400',
             fontSize: 20
@@ -106,7 +107,7 @@ const MyTabs = () => {
         name="My book" 
         component={MyBooksScreen} 
         options={{
-          title: "My books",
+          title: "設定",
           headerTitleStyle: {
             fontWeight: '400',
             fontSize: 20
@@ -139,7 +140,7 @@ const HomeStack = () => {
     >
       <Stack.Screen
         name="Home"
-        component={AlbumScreen}
+        component={HomeScreen}
         
         options={{
           // headerTitle: (props) => <Header {...props} />,
@@ -149,6 +150,11 @@ const HomeStack = () => {
             backgroundColor: '#FFEBB9',
           },
           headerTintColor: '#70552E',
+          headerTitleAlign: 'center',
+          headerTitleStyle: {
+            fontSize: 32,
+            fontWeight: '700'
+          }
         }}
       />
       <Stack.Screen
