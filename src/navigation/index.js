@@ -68,9 +68,14 @@ const MyTabs = () => {
         component={WishlistScreen} 
         options={{
           title: "分析",
+          headerStyle: {
+            backgroundColor: '#FFEBB9',
+          },
+          headerTintColor: '#70552E',
+          headerTitleAlign: 'center',
           headerTitleStyle: {
-            fontWeight: '400',
-            fontSize: 20
+            fontSize: 32,
+            fontWeight: '700'
           },
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons name="bookmark" color={color} size={26} />
@@ -88,9 +93,14 @@ const MyTabs = () => {
         component={MyBooksScreen} 
         options={{
           title: "統計",
+          headerStyle: {
+            backgroundColor: '#FFEBB9',
+          },
+          headerTintColor: '#70552E',
+          headerTitleAlign: 'center',
           headerTitleStyle: {
-            fontWeight: '400',
-            fontSize: 20
+            fontSize: 32,
+            fontWeight: '700'
           },
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons name="book-open" color={color} size={26} />
@@ -104,13 +114,18 @@ const MyTabs = () => {
         }}
       />
       <Tab.Screen 
-        name="My book" 
+        name="Setting" 
         component={MyBooksScreen} 
         options={{
           title: "設定",
+          headerStyle: {
+            backgroundColor: '#FFEBB9',
+          },
+          headerTintColor: '#70552E',
+          headerTitleAlign: 'center',
           headerTitleStyle: {
-            fontWeight: '400',
-            fontSize: 20
+            fontSize: 32,
+            fontWeight: '700'
           },
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons name="cog" color={color} size={26} />

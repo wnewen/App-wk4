@@ -4,13 +4,13 @@ import { Box, Text, ScrollView } from "native-base";
 import DocumentList from "../components/DocumentList";
 import DocumentData from "../json/documents.json"
 
-const HomeScreen = ({ navigation }) => {
+const AdviseScreen = ({ navigation }) => {
   return (
     <ScrollView >
     <Box backgroundColor="#FFF9EB"> 
       {/* <Header /> */}
     
-      <Text fontSize={24} fontWeight="700" ml="20px" mt="8px" color="#70552E" >記錄</Text>
+      <Text fontSize={24} fontWeight="700" ml="20px" mt="8px" color="#70552E" >我的狀態</Text>
       <DocumentList 
         list={DocumentData.document}
         navigation={navigation}
@@ -27,4 +27,4 @@ const HomeScreen = ({ navigation }) => {
   );
 };
 
-export default HomeScreen;
+export default AdviseScreen;
