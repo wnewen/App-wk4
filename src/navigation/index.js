@@ -12,6 +12,7 @@ import { Pressable, Box, Image } from "native-base";
 import { TouchableOpacity, Text } from 'react-native';
 import MyTheme from '../style/MyTheme';
 import HomeScreen from '../screens/HomeScreen';
+import AdviseScreen from '../screens/AdviseScreen';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -65,7 +66,7 @@ const MyTabs = () => {
       />
       <Tab.Screen 
         name="Wishlist" 
-        component={WishlistScreen} 
+        component={AdviseScreen} 
         options={{
           title: "分析",
           headerStyle: {
