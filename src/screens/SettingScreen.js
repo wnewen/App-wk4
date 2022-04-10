@@ -13,7 +13,7 @@ const SettingScreen = ({ navigation }) => {
       <Box height="0" width={150} borderBottomWidth="2px" ml="20px" _light={{borderColor: "#ffe08f"}} _dark={{borderColor: "#1F1F1F"}} ></Box>
       <Box alignItems="center"mt="10px">
         
-        <Text fontSize="lg">{colorMode == "light" ? "Light Mode" : "Dark Mode"}</Text>
+        <Text fontSize="16px" _light={{color: "#70552E"}} _dark={{color: "#fff"}}>{colorMode == "light" ? "淺色模式" : "深色模式"}</Text>
         <Switch 
           name="light Mode"
           isChecked={colorMode === "light"}

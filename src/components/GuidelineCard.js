@@ -7,11 +7,11 @@ const GuidelineCard = ({ guideline, navigation }) => {
       
       <ScrollView borderRadius="10px" w="160px" h="160px"  marginTop="18px" ml="15px" pl="20px" pr="20px" showsVerticalScrollIndicator={false} _light={{bgColor: "#fff", shadow: "4px"}}  _dark={{bg: "#313131"}}>
         
-        <Text fontSize={16} color="#9284B9" mt="16px" _dark={{color: "#9284B9"}}>{guideline.title}</Text>
-        <Text fontSize={12} color="#70552E" mt="4px" _dark={{color: "#FFFCF4"}}>{guideline.description}</Text>
+        <Text fontSize={16} mt="16px" _light={{color: "#2E3943"}} _dark={{color: "#9284B9"}}>{guideline.title}</Text>
+        <Text fontSize={12} mt="4px" _light={{color: "#70552E"}} _dark={{color: "#FFFCF4"}}>{guideline.description}</Text>
         
       </ScrollView>   
     </Box>
   )};
 
-export default GuidelineCard;
+export default GuidelineCard;             

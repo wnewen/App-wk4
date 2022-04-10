@@ -6,15 +6,42 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import DetailScreen from '../screens/DetailScreen';
 import MyBooksScreen from '../screens/MyBooksScreen';
 import { Pressable, Box, Image } from "native-base";
-import { TouchableOpacity, Text } from 'react-native';
+import { TouchableOpacity, Text, StyleSheet ,View} from 'react-native';
 import MyTheme from '../style/MyTheme';
 import HomeScreen from '../screens/HomeScreen';
 import AdviseScreen from '../screens/AdviseScreen';
 import SettingScreen from '../screens/SettingScreen';
+import AddScreen from '../screens/AddScreen';
 
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
+
+const CustomTabBarButton = ({children,onPress})=>(
+  <TouchableOpacity
+    style={{
+      top:-20,
+      alignItems:'center',
+      justifyContent:'center',
+      ...style.shadow,
+    }}
+    onPress={onPress}
+    activeOpacity='0.6'
+    
+  >
+  
+    <View style={{
+      width:70,
+      height:70,
+      borderradious:35,
+      
+    }}
+    
+    >
+      {children}
+    </View>
+  </TouchableOpacity>
+);
 
 function Header() {
   return (
@@ -39,10 +66,10 @@ const MyTabs = () => {
     <Tab.Navigator
       initialRouteName="HomeStack"
       screenOptions={{
-        tabBarActiveTintColor: '#ffb800',
-        tabBarInactiveTintColor: '#B69C85',
-        tabBarActiveBackgroundColor: '#FFEBB9',
-        tabBarInactiveBackgroundColor: '#FFEBB9',
+        tabBarActiveTintColor: '#FFB800',
+        tabBarInactiveTintColor: '#FFEBB9',
+        tabBarActiveBackgroundColor: '#2E3943',
+        tabBarInactiveBackgroundColor: '#2E3943',
         // headerShown: false
       }}
       _dark={{
@@ -74,7 +101,7 @@ const MyTabs = () => {
         options={{
           title: "分析",
           headerStyle: {
-            backgroundColor: '#FFEBB9',
+            backgroundColor: '#FFB800',
           },
           headerTintColor: '#70552E',
           headerTitleAlign: 'center',
@@ -94,12 +121,36 @@ const MyTabs = () => {
         }}
       />
       <Tab.Screen 
+        name="." 
+        
+        component={AddScreen} 
+        options={{
+          
+          tabBarIcon: ({ focused }) => (
+           
+            <Image 
+            source={require('../image/add.png')}
+            resizeMode="contain"
+            style={{
+              width:100,
+              height:100,
+              //tintColor:"#000"
+            }}
+                  />
+            //<MaterialCommunityIcons name="plus-circle" color={color} size={26} />
+          ),
+          tabBarButton:(props)=>(
+            <CustomTabBarButton {...props}/>
+          ),
+        }}
+      />
+      <Tab.Screen 
         name="My books" 
         component={MyBooksScreen} 
         options={{
           title: "統計",
           headerStyle: {
-            backgroundColor: '#FFEBB9',
+            backgroundColor: '#FFB800',
           },
           headerTintColor: '#70552E',
           headerTitleAlign: 'center',
@@ -124,7 +175,7 @@ const MyTabs = () => {
         options={{
           title: "設定",
           headerStyle: {
-            backgroundColor: '#FFEBB9',
+            backgroundColor: '#FFB800',
           },
           headerTintColor: '#70552E',
           headerTitleAlign: 'center',
@@ -167,7 +218,7 @@ const HomeStack = () => {
           headerShadowVisible: false,
           title: "首頁",
           headerStyle: {
-            backgroundColor: '#FFEBB9',
+            backgroundColor: '#FFB800',
           },
           headerTintColor: '#70552E',
           headerTitleAlign: 'center',
@@ -218,5 +269,18 @@ const HomeStack = () => {
     </Stack.Navigator>
   );
 }
+
+const style = StyleSheet.create({
+  shadow:{
+    shadowColor:'#000',
+   shadowOffset:{
+      height:8,
+      width:0,
+    },
+    shadowOpacity:0.3,
+    shadowRadius:2,
+    elevation:10
+  }
+});
 
 export default Navigation;
