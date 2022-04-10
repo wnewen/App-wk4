@@ -3,16 +3,15 @@ import { NavigationContainer, useTheme} from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import AlbumScreen from '../screens/AlbumScreen';
 import DetailScreen from '../screens/DetailScreen';
-import albumData from "../json/albums.json";
-import WishlistScreen from '../screens/WishlistScreen';
 import MyBooksScreen from '../screens/MyBooksScreen';
 import { Pressable, Box, Image } from "native-base";
 import { TouchableOpacity, Text } from 'react-native';
 import MyTheme from '../style/MyTheme';
 import HomeScreen from '../screens/HomeScreen';
 import AdviseScreen from '../screens/AdviseScreen';
+import SettingScreen from '../screens/SettingScreen';
+
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -45,6 +44,11 @@ const MyTabs = () => {
         tabBarActiveBackgroundColor: '#FFEBB9',
         tabBarInactiveBackgroundColor: '#FFEBB9',
         // headerShown: false
+      }}
+      _dark={{
+        screenOptions: {
+          tabBarActiveBackgroundColor: "#000"
+        }
       }}
     >
       <Tab.Screen 
@@ -116,7 +120,7 @@ const MyTabs = () => {
       />
       <Tab.Screen 
         name="Setting" 
-        component={MyBooksScreen} 
+        component={SettingScreen} 
         options={{
           title: "設定",
           headerStyle: {

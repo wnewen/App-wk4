@@ -1,8 +1,6 @@
 import { Box } from "native-base";
 import React from "react";
 import { FlatList,Text } from "react-native";
-import AlbumDetail from "./AlbumDetail";
-import Document from "./Document";
 import StatusCard from "./StatusCard";
 
 const StatusList = ({ list, navigation }) => {
