@@ -15,7 +15,7 @@ import AddScreen from '../screens/AddScreen';
 import StatisticScreen from '../screens/StatisticScreen';
 import { useColorMode } from "native-base";
 import NullScreen from '../screens/NullScreen';
-import { backgroundColor } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
+import ActionButton from '../components/ActionButton';
 
 
 const Stack = createNativeStackNavigator();
@@ -124,9 +124,7 @@ const MyTabs = () => {
           }
         }}
       />
-      
-
-<Tab.Screen 
+      {/* <Tab.Screen 
         name="AddScreen" 
         
         component={AddScreen} 
@@ -146,6 +144,13 @@ const MyTabs = () => {
           tabBarButton:(props)=>(
             <CustomTabBarButton {...props}/>
           ),
+        }}
+      /> */}
+      <Tab.Screen 
+        name="ActionButton" 
+        component={NullScreen} 
+        options={{
+          tabBarButton: () => <ActionButton />
         }}
       />
       <Tab.Screen 
