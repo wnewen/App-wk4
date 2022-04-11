@@ -1,31 +1,49 @@
 import React from "react";
-import { ImageBackground, Image } from "react-native-web";
-import { Box, Text, ScrollView } from "native-base";
-import DocumentData from "../json/documents.json"
-import StatusList from "../components/StatusList";
-import GuidelineList from "../components/GuidelineList";
+import { Box, Text, ScrollView, Input,  Button } from "native-base";
 
 const AddScreen = ({ navigation }) => {
   return (
     <ScrollView >
     <Box backgroundColor="#FFF9EB" _dark={{bg: "#414141"}} h="650px"> 
       {/* <Header /> */}
-    
-      <Text fontSize={24} fontWeight="700" ml="20px" mt="50px" _light={{color: "#70552E"}} _dark={{color: "#FFF9EB"}}>我的狀態</Text>
-      <Box height="0" width={120} borderBottomWidth="2px" ml="20px" _light={{borderColor: "#ffe08f"}} _dark={{borderColor: "#1F1F1F"}}></Box>
-      <StatusList 
-        list={DocumentData.myStatus}
-        navigation={navigation}
-        mt="16px"
-      />
+      
+      <Text fontSize="20px" fontWeight="700" mt="92px" ml="24px" _light={{color: "#2E3943"}}>時間</Text>
+      <Box display="flex" flexDir="row" justifyContent="center" mt="16px">
+        <Input variant="rounded" placeholder="04 / 15" fontSize="16px" alignItems="center" w="160px" mr={5} _light={{bg: "#fff"}}></Input>
+        <Input variant="rounded" placeholder="15 : 03" fontSize="16px" w="160px" _light={{bg: "#fff"}}></Input>
+      </Box>
 
-      <Text fontSize={24} fontWeight="700" ml="20px" mt="40px" _light={{color: "#70552E"}} _dark={{color: "#FFF9EB"}}>飲食指南</Text>
-      <Box height="0" width={120} borderColor="#ffe08f" borderBottomWidth="2px" ml="20px" _dark={{borderColor: "#1F1F1F"}}></Box>
-      <GuidelineList 
-        list={DocumentData.dietaryGuidlines}
-        navigation={navigation}
-        mt="16px"
-      />
+      <Text fontSize="20px" fontWeight="700" mt="28px" ml="24px" _light={{color: "#2E3943"}}>形狀</Text>
+      <Box display="flex" flexDir="row" justifyContent="center" mt="16px">
+        <Input variant="rounded" w="40px" mr="15px" _light={{bg: "#fff"}}></Input>
+        <Input variant="rounded" w="40px" mr="15px"  _light={{bg: "#fff"}}></Input>
+        <Input variant="rounded" w="40px" mr="15px"  _light={{bg: "#fff"}}></Input>
+        <Input variant="rounded" w="40px" mr="15px"  _light={{bg: "#fff"}}></Input>
+        <Input variant="rounded" w="40px" mr="15px"  _light={{bg: "#fff"}}></Input>
+        <Input variant="rounded" w="40px" ml="15px"  _light={{bg: "#fff"}}></Input>
+      </Box>
+
+      <Text fontSize="20px" fontWeight="700" mt="28px" ml="24px" _light={{color: "#2E3943"}}>顏色</Text>
+      <Box display="flex" flexDir="row" justifyContent="center" mt="16px">
+        <Input variant="rounded" w="40px" mr="15px" _light={{bg: "#fff"}}></Input>
+        <Input variant="rounded" w="40px" mr="15px"  _light={{bg: "#fff"}}></Input>
+        <Input variant="rounded" w="40px" mr="15px"  _light={{bg: "#fff"}}></Input>
+        <Input variant="rounded" w="40px" mr="15px"  _light={{bg: "#fff"}}></Input>
+        <Input variant="rounded" w="40px" mr="15px"  _light={{bg: "#fff"}}></Input>
+        <Input variant="rounded" w="40px" ml="15px"  _light={{bg: "#fff"}}></Input>
+      </Box>
+
+      <Text fontSize="20px" fontWeight="700" mt="28px" ml="24px" _light={{color: "#2E3943"}}>排便量</Text>
+      <Box display="flex" flexDir="row" justifyContent="center" mt="16px">
+        <Input variant="rounded" w="40px" mr="15px" _light={{bg: "#fff"}}></Input>
+        <Input variant="rounded" w="40px" mr="15px"  _light={{bg: "#fff"}}></Input>
+        <Input variant="rounded" w="40px" mr="15px"  _light={{bg: "#fff"}}></Input>
+      </Box>
+   
+    <Button borderRadius="full" h="60px" w="320px" alignSelf="center" justifyContent="center" mt="24px" _light={{bg: "#FFE08F"}} _dark={{bg: "#1F1F1F"}}>
+        <Text fontSize="32px" fontWeight="700" _light={{color: "#2E3943"}} _dark={{color: "#FFFCF4"}}>完成</Text>
+    </Button>
+      
     </Box>
     </ScrollView>
   );

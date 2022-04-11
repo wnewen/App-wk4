@@ -12,6 +12,10 @@ import HomeScreen from '../screens/HomeScreen';
 import AdviseScreen from '../screens/AdviseScreen';
 import SettingScreen from '../screens/SettingScreen';
 import AddScreen from '../screens/AddScreen';
+import StatisticScreen from '../screens/StatisticScreen';
+import { useColorMode } from "native-base";
+import NullScreen from '../screens/NullScreen';
+import { backgroundColor } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
 
 
 const Stack = createNativeStackNavigator();
@@ -43,6 +47,7 @@ const CustomTabBarButton = ({children,onPress})=>(
   </TouchableOpacity>
 );
 
+
 function Header() {
   return (
     <Box h="24px" w="100%" bg="#fff" display="flex" flexDirection="row" justifyContent="space-between" alignItems="center" >
@@ -50,6 +55,9 @@ function Header() {
     </Box>
   );
 };
+
+const darkblue = "#2E3943";
+const black = "#242323";
 
 const Navigation = () => {
   return (
@@ -61,6 +69,7 @@ const Navigation = () => {
 
 const MyTabs = () => {
   const { colors } = useTheme();
+  const { colorMode } = useColorMode();
 
   return (
     <Tab.Navigator
@@ -68,14 +77,9 @@ const MyTabs = () => {
       screenOptions={{
         tabBarActiveTintColor: '#FFB800',
         tabBarInactiveTintColor: '#FFEBB9',
-        tabBarActiveBackgroundColor: '#2E3943',
-        tabBarInactiveBackgroundColor: '#2E3943',
+        tabBarActiveBackgroundColor: colorMode == "light" ? "#2E3943" : "#242323" ,
+        tabBarInactiveBackgroundColor: colorMode == "light" ? "#2E3943" : "#242323" ,
         // headerShown: false
-      }}
-      _dark={{
-        screenOptions: {
-          tabBarActiveBackgroundColor: "#000"
-        }
       }}
     >
       <Tab.Screen 
@@ -96,15 +100,15 @@ const MyTabs = () => {
         }}
       />
       <Tab.Screen 
-        name="Wishlist" 
+        name="Advise" 
         component={AdviseScreen} 
         options={{
           title: "分析",
           headerStyle: {
-            backgroundColor: '#FFB800',
+            backgroundColor: colorMode == "light" ? "#ffb800" : "#242323"
           },
-          headerTintColor: '#70552E',
-          headerTitleAlign: 'center',
+          headerTintColor: colorMode == "light" ? "#705521" :"#FFFCF4",
+          // headerTitleAlign: 'center',
           headerTitleStyle: {
             fontSize: 32,
             fontWeight: '700'
@@ -120,24 +124,24 @@ const MyTabs = () => {
           }
         }}
       />
-      <Tab.Screen 
-        name="." 
+      
+
+<Tab.Screen 
+        name="AddScreen" 
         
         component={AddScreen} 
         options={{
-          
+          title: "",
           tabBarIcon: ({ focused }) => (
-           
             <Image 
             source={require('../image/add.png')}
             resizeMode="contain"
             style={{
               width:100,
               height:100,
-              //tintColor:"#000"
             }}
-                  />
-            //<MaterialCommunityIcons name="plus-circle" color={color} size={26} />
+            alt="ic_add"
+            />
           ),
           tabBarButton:(props)=>(
             <CustomTabBarButton {...props}/>
@@ -145,15 +149,15 @@ const MyTabs = () => {
         }}
       />
       <Tab.Screen 
-        name="My books" 
-        component={MyBooksScreen} 
+        name="Ststistic" 
+        component={StatisticScreen} 
         options={{
           title: "統計",
           headerStyle: {
-            backgroundColor: '#FFB800',
+            backgroundColor: colorMode == "light" ? "#ffb800" : "#242323"
           },
-          headerTintColor: '#70552E',
-          headerTitleAlign: 'center',
+          headerTintColor: colorMode == "light" ? "#705521" :"#FFFCF4",
+          // headerTitleAlign: 'center',
           headerTitleStyle: {
             fontSize: 32,
             fontWeight: '700'
@@ -175,10 +179,10 @@ const MyTabs = () => {
         options={{
           title: "設定",
           headerStyle: {
-            backgroundColor: '#FFB800',
+            backgroundColor: colorMode == "light" ? "#ffb800" : "#242323"
           },
-          headerTintColor: '#70552E',
-          headerTitleAlign: 'center',
+          headerTintColor: colorMode == "light" ? "#705521" :"#FFFCF4",
+          // headerTitleAlign: 'center',
           headerTitleStyle: {
             fontSize: 32,
             fontWeight: '700'
@@ -203,6 +207,8 @@ const HomeStack = () => {
   const toggleFunction = () => {
       setToggle(!toggle);
   };
+  const { colorMode } = useColorMode();
+
   return (
     <Stack.Navigator
       // screenOptions={{
@@ -216,15 +222,15 @@ const HomeStack = () => {
         options={{
           // headerTitle: (props) => <Header {...props} />,
           headerShadowVisible: false,
-          title: "首頁",
+          title: "poopairy",
           headerStyle: {
-            backgroundColor: '#FFB800',
+            backgroundColor: colorMode == "light" ? "#ffb800" : "#242323",
           },
-          headerTintColor: '#70552E',
-          headerTitleAlign: 'center',
+          headerTintColor: colorMode == "light" ? "#705521" :"#FFFCF4",
+          // headerTitleAlign: 'center',
           headerTitleStyle: {
             fontSize: 32,
-            fontWeight: '700'
+            fontWeight: '700',
           }
         }}
       />

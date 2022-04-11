@@ -1,14 +1,19 @@
 import React from "react";
-import { ImageBackground, Image } from "react-native-web";
+import { ImageBackground } from "react-native";
 import { Box, Text, ScrollView } from "native-base";
 import DocumentData from "../json/documents.json"
 import StatusList from "../components/StatusList";
 import GuidelineList from "../components/GuidelineList";
 
+const background = "../image/background.png";
+const darkBackground = "../image/dark-background.png";
+
 const AdviseScreen = ({ navigation }) => {
   return (
-    <ScrollView >
     <Box backgroundColor="#FFF9EB" _dark={{bg: "#414141"}} h="650px"> 
+    <ImageBackground 
+_light={{ source:require(background) }}  _dark={{ source:require(darkBackground) }} resizeMode="cover" style=
+      {{flex: 1,}} alt="background">
       {/* <Header /> */}
     
       <Text fontSize={24} fontWeight="700" ml="20px" mt="50px" _light={{color: "#70552E"}} _dark={{color: "#FFF9EB"}}>我的狀態</Text>
@@ -25,9 +30,8 @@ const AdviseScreen = ({ navigation }) => {
         list={DocumentData.dietaryGuidlines}
         navigation={navigation}
         mt="16px"
-      />
+      /></ImageBackground>
     </Box>
-    </ScrollView>
   );
 };
 
