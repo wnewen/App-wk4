@@ -124,28 +124,31 @@ const MyTabs = () => {
           }
         }}
       />
-      {/* <Tab.Screen 
+      <Tab.Screen 
         name="AddScreen" 
         
         component={AddScreen} 
         options={{
           title: "",
-          tabBarIcon: ({ focused }) => (
-            <Image 
-            source={require('../image/add.png')}
-            resizeMode="contain"
-            style={{
-              width:100,
-              height:100,
-            }}
-            alt="ic_add"
-            />
-          ),
-          tabBarButton:(props)=>(
-            <CustomTabBarButton {...props}/>
+          // tabBarIcon: ({ focused }) => (
+          //   <Image 
+          //   source={require('../image/add.png')}
+          //   resizeMode="contain"
+          //   style={{
+          //     width:100,
+          //     height:100,
+          //   }}
+          //   alt="ic_add"
+          //   />
+          // ),
+          // tabBarButton:(props)=>(
+          //   <CustomTabBarButton {...props}/>
+          // ),
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons name="bookmark" color="#2E3943" size={26} />
           ),
         }}
-      /> */}
+      />
       <Tab.Screen 
         name="ActionButton" 
         component={NullScreen} 
