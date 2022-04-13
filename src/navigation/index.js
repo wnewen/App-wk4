@@ -7,15 +7,14 @@ import DetailScreen from '../screens/DetailScreen';
 import MyBooksScreen from '../screens/MyBooksScreen';
 import { Pressable, Box, Image } from "native-base";
 import { TouchableOpacity, Text, StyleSheet ,View} from 'react-native';
-import MyTheme from '../style/MyTheme';
 import HomeScreen from '../screens/HomeScreen';
 import AdviseScreen from '../screens/AdviseScreen';
 import SettingScreen from '../screens/SettingScreen';
 import AddScreen from '../screens/AddScreen';
-import StatisticScreen from '../screens/StatisticScreen';
 import { useColorMode } from "native-base";
 import NullScreen from '../screens/NullScreen';
 import ActionButton from '../components/ActionButton';
+import StatisticScreen from '../screens/StatisticScreen.tsx';
 
 
 const Stack = createNativeStackNavigator();
@@ -49,9 +48,10 @@ const CustomTabBarButton = ({children,onPress})=>(
 
 
 function Header() {
+  const { colorMode } = useColorMode();
   return (
-    <Box h="24px" w="100%" bg="#fff" display="flex" flexDirection="row" justifyContent="space-between" alignItems="center" >
-        <Text fontSize="32px">首頁</Text>
+    <Box  w="100%" bg="#ffb800" display="flex" flexDirection="row" justifyContent="space-between" alignItems="center" >
+        <Text fontSize={32} color={colorMode == "light" ? "#70552E" : "#FFFCF4"}>首頁</Text>
     </Box>
   );
 };
@@ -104,17 +104,18 @@ const MyTabs = () => {
         component={AdviseScreen} 
         options={{
           title: "分析",
+          headerShadowVisible: false,
           headerStyle: {
-            backgroundColor: colorMode == "light" ? "#ffb800" : "#242323"
+            backgroundColor: colorMode == "light" ? "#ffb800" : "#242323",
           },
           headerTintColor: colorMode == "light" ? "#705521" :"#FFFCF4",
-          // headerTitleAlign: 'center',
+          headerTitleAlign: 'center',
           headerTitleStyle: {
             fontSize: 32,
             fontWeight: '700'
           },
           tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name="bookmark" color={color} size={26} />
+            <MaterialCommunityIcons name="clipboard-text" color={color} size={26} />
           ),
           tabBarIconStyle: {
             marginTop: 5,
@@ -161,17 +162,18 @@ const MyTabs = () => {
         component={StatisticScreen} 
         options={{
           title: "統計",
+          headerShadowVisible: false,
           headerStyle: {
-            backgroundColor: colorMode == "light" ? "#ffb800" : "#242323"
+            backgroundColor: colorMode == "light" ? "#ffb800" : "#242323",
           },
           headerTintColor: colorMode == "light" ? "#705521" :"#FFFCF4",
-          // headerTitleAlign: 'center',
+          headerTitleAlign: 'center',
           headerTitleStyle: {
             fontSize: 32,
             fontWeight: '700'
           },
           tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name="book-open" color={color} size={26} />
+            <MaterialCommunityIcons name="chart-bar" color={color} size={26} />
           ),
           tabBarIconStyle: {
             marginTop: 5,
@@ -187,10 +189,10 @@ const MyTabs = () => {
         options={{
           title: "設定",
           headerStyle: {
-            backgroundColor: colorMode == "light" ? "#ffb800" : "#242323"
+            backgroundColor: colorMode == "light" ? "#ffb800" : "#242323",
           },
           headerTintColor: colorMode == "light" ? "#705521" :"#FFFCF4",
-          // headerTitleAlign: 'center',
+          headerTitleAlign: 'center',
           headerTitleStyle: {
             fontSize: 32,
             fontWeight: '700'
@@ -235,8 +237,9 @@ const HomeStack = () => {
             backgroundColor: colorMode == "light" ? "#ffb800" : "#242323",
           },
           headerTintColor: colorMode == "light" ? "#705521" :"#FFFCF4",
-          // headerTitleAlign: 'center',
+          headerTitleAlign: 'center',
           headerTitleStyle: {
+            marginTop: "20px",
             fontSize: 32,
             fontWeight: '700',
           }
@@ -287,9 +290,9 @@ const HomeStack = () => {
 const style = StyleSheet.create({
   shadow:{
     shadowColor:'#000',
-   shadowOffset:{
-      height:8,
-      width:0,
+    shadowOffset:{
+    height:8,
+    width:0,
     },
     shadowOpacity:0.3,
     shadowRadius:2,

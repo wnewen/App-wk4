@@ -6,7 +6,7 @@ import DocumentCard from "./DocumentCard";
 const DocumentList = ({ list, navigation }) => {
   const renderItem = ({ item }) => <DocumentCard document={item} navigation={navigation} />;
   return (
-    <Box>
+    <Box mb="90px">
         <FlatList
         data={list}
         renderItem={renderItem}

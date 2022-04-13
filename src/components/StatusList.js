@@ -10,7 +10,7 @@ const StatusList = ({ list, navigation }) => {
         <FlatList
         data={list}
         renderItem={renderItem}
-        keyExtractor={item => item.date}
+        keyExtractor={item => item.title}
         horizontal={true}
         showsHorizontalScrollIndicator={false}
         />    
