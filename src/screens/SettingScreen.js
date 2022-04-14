@@ -23,7 +23,7 @@ const SettingScreen = ({ navigation }) => {
       <Box height="0" width={150} borderBottomWidth="2px" ml="20px" _light={{borderColor: "#ffe08f"}} _dark={{borderColor: "#1F1F1F"}} ></Box>
       <Box alignItems="center"mt="10px">
         
-      <Box alignItems="center" justifyContent="space-around" flexDirection="row" mt="20px" >
+      <Box alignItems="center" justifyContent="space-around" flexDirection="row" mt="20px" h="80px" w="320px" borderRadius="10px" _light={{bg: "#fff", shadow: 4}} >
         <Text fontSize="16px" _light={{color: "#70552E"}} _dark={{color: "#fff"}}>{colorMode == "light" ? "淺色模式" : "深色模式"}</Text>
         <Switch 
           name="light Mode"
