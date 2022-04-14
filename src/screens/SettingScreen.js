@@ -44,7 +44,7 @@ const SettingScreen = ({ navigation }) => {
         style={{flex: 1,}} 
         alt="background">
       <Text fontSize={24} fontWeight="700" ml="20px" mt="50px" _light={{color: "#70552E"}} _dark={{color: "#FFFCF4"}}>色彩模式</Text>
-      <Box height="0" width={150} borderBottomWidth="2px" ml="20px" _light={{borderColor: "#ffe08f"}} _dark={{borderColor: "#1F1F1F"}} ></Box>
+      <Box height="0" width={150} borderBottomWidth="2px" ml="20px" _light={{borderColor: "#ffe08f"}} _dark={{borderColor: "#ffb800"}} ></Box>
       <Box alignItems="center"mt="10px">
         
       <Box alignItems="center" justifyContent="space-around" flexDirection="row" mt="20px" h="80px" w="320px" borderRadius="10px" _light={{bg: "#fff", shadow: 4}} _dark={{bg: "#313131", borderColor: "#656565", borderWidth: "1px"}}>
