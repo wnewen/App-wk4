@@ -20,8 +20,9 @@ const data = {
 }
 const StatisticScreen=()=>{
     return (
-        <Box>
-            
+        <Box _light={{backgroundColor: "#FFF9EB"}} _dark={{bg: "#414141"}}>
+            <Text fontSize={24} fontWeight="700" ml="20px" mt="36px" _light={{color: "#70552E"}} _dark={{color: "#FFF9EB"}}>週統計</Text>
+            <Box height="0" width={100} _light={{borderColor: "#FFE08F"}} _dark={{borderColor: "#ffb800"}} borderBottomWidth="2px" ml="20px"></Box>
             <Box _light={{backgroundColor: "#FFF9EB"}} _dark={{bg: "#414141"}} h="100%" alignItems="center">
                 <Box borderRadius="10px" _light={{bg: "#FFFFFF", shadow:4 }} _dark={{bg: "#313131", borderColor: "#5D5D5D", borderWidth: "1px"}} h="320px" w="352px" mt="20px">
                     <VictoryChart >
