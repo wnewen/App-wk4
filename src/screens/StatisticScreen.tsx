@@ -23,7 +23,7 @@ const StatisticScreen=()=>{
         <Box>
             
             <Box _light={{backgroundColor: "#FFF9EB"}} _dark={{bg: "#414141"}} h="100%" alignItems="center">
-                <Box borderRadius="10px" _light={{bg: "#FFFFFF", shadow:4 }} _dark={{bg: "#313131", borderColor: "#5D5D5D", borderWidth: "1px"}} h="300px" w="340px" mt="20px">
+                <Box borderRadius="10px" _light={{bg: "#FFFFFF", shadow:4 }} _dark={{bg: "#313131", borderColor: "#5D5D5D", borderWidth: "1px"}} h="320px" w="352px" mt="20px">
                     <VictoryChart >
                         <VictoryGroup offset={20}>
                             
