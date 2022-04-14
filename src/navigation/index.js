@@ -188,6 +188,7 @@ const MyTabs = () => {
         component={SettingScreen} 
         options={{
           title: "設定",
+          headerShadowVisible: false,
           headerStyle: {
             backgroundColor: colorMode == "light" ? "#ffb800" : "#242323",
           },
