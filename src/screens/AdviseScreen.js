@@ -36,7 +36,7 @@ const AdviseScreen = ({ navigation }) => {
         </Box>
       </Hidden>
       <Hidden colorMode="light">
-        <Box backgroundColor="#FFF9EB" _dark={{bg: "#414141"}} h="650px"> 
+        <Box backgroundColor="#FFF9EB" _dark={{bg: "#414141"}} h="100%"> 
         <ImageBackground source={require('../image/dark-background.png')} resizeMode="cover" style=
           {{flex: 1,}} alt="background">
           {/* <Header /> */}
