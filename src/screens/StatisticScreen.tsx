@@ -1,5 +1,5 @@
 import React from "react";
-import { Dimensions } from "react-native";
+import { Dimensions, ImageBackground } from "react-native";
 import { Box, Text, ScrollView, Image, View, Hidden  } from "native-base";
 import DocumentList from "../components/DocumentList";
 import DocumentData from "../json/documents.json";
