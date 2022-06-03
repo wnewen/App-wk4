@@ -1,7 +1,35 @@
-import React from "react";
-import { Box, Text, ScrollView, Input,  Button } from "native-base";
+import React, { useState } from "react";
+import { Box, Text, ScrollView, Input,  Button, Pressable } from "native-base";
+import {  Platform } from 'react-native';
+import DateTimePicker from '@react-native-community/datetimepicker';
+
 
 const AddScreen = ({ navigation }) => {
+  const [date, setDate] = useState(new Date());
+  const [mode, setMode] = useState('date');
+  const [show, setShow] = useState(false);
+  const [text, setText] = useState('Empty');
+
+
+  const onChange = (event, selelctedDate) => {
+    const currentDate = selectedDate || date;
+    setShow(Platform.OS == 'ios');
+    setDate(currentDate);
+
+    let tempDate = new Date(currentDate);
+    let fDate = tempDate.getDate() + '/' + (tempDate.getMonth() + 1) + '/' + tempDate.getFullYear();
+    let fTime = 'Hours: ' + tempDate.getHours() + ' | Minutes: ' + tempDate.getMinutes();
+    setText(fDate + '\n' + fTime);
+
+    console.log(fDate + '(' + fTime + ')');
+  }
+
+  const showMode = (currentMode) => {
+    setShow(true);
+    setMode(currentMode);
+  }
+
+
   return (
     <ScrollView >
     <Box backgroundColor="#FFF9EB" _dark={{bg: "#414141"}} h="650px"> 
@@ -9,8 +37,10 @@ const AddScreen = ({ navigation }) => {
       
       <Text fontSize="20px" fontWeight="700" mt="92px" ml="24px" _light={{color: "#2E3943"}}>時間</Text>
       <Box display="flex" flexDir="row" justifyContent="center" mt="16px">
-        <Input variant="rounded" placeholder="04 / 15" fontSize="16px" alignItems="center" w="160px" mr={5} _light={{bg: "#fff"}}></Input>
-        <Input variant="rounded" placeholder="15 : 03" fontSize="16px" w="160px" _light={{bg: "#fff"}}></Input>
+        <Pressable>
+          <Text>time picker</Text>
+        </Pressable>
+
       </Box>
 
       <Text fontSize="20px" fontWeight="700" mt="28px" ml="24px" _light={{color: "#2E3943"}}>形狀</Text>

@@ -1,9 +1,41 @@
-import React from 'react';
-import { Button, Actionsheet, useDisclose, Box, Pressable, Text, Input, Image, ScrollView } from 'native-base';
+import React, { useState } from 'react';
+import { Button, Actionsheet, useDisclose, Box, Pressable, Text, Input, Image, ScrollView, HStack, VStack } from 'native-base';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import {  Platform } from 'react-native';
+import DateTimePicker from '@react-native-community/datetimepicker';
+import AddScreen from '../screens/AddScreen';
 
 const ActionButton = ({ list, navigation }) => {
   const { isOpen, onOpen, onClose } = useDisclose();
+
+  const [date, setDate] = useState(new Date());
+  const [mode, setMode] = useState('date');
+  const [show, setShow] = useState(false);
+  const [dateText, setDateText] = useState('select date');
+  const [timeText, setTimeText] = useState('select time');
+
+
+  const onChange = (event, selelctedDate) => {
+    const currentDate = selectedDate || date;
+    // setShow(Platform.OS === 'ios');
+    setDate(currentDate);
+
+    let tempDate = new Date(currentDate);
+    let fDate = tempDate.getDate() + '/' + (tempDate.getMonth() + 1) + '/' + tempDate.getFullYear();
+    let fTime = tempDate.getHours() + ' : ' + tempDate.getMinutes();
+    setDateText(fDate);
+    setTimeText(fTime);
+
+    console.log(fDate + '(' + fTime + ')');
+  }
+
+  const showMode = (currentMode) => {
+    setShow(true);
+    setMode(currentMode);
+  }
+
+
+
   return(
     <>
         <Pressable
@@ -24,15 +56,30 @@ const ActionButton = ({ list, navigation }) => {
                 <ScrollView>
                 <Actionsheet.Header></Actionsheet.Header>
 
-                <Actionsheet.Item>
-                    <Box>
+                    <VStack>
                         <Text fontSize="20px" fontWeight="700" mt="20px" ml="8px" _light={{color: "#2E3943"}}>時間</Text>
-                        <Box display="flex" flexDir="row" justifyContent="center" mt="16px" >
-                            <Input variant="rounded" placeholder="04 / 15" fontSize="16px" alignItems="center" w="150px" mr={5} _light={{bg: "#fff"}}></Input>
-                            <Input variant="rounded" placeholder="15 : 03" fontSize="16px" w="150px" _light={{bg: "#fff"}}></Input>
-                        </Box>
-                    </Box>
-                </Actionsheet.Item>
+                        
+                        <HStack justifyContent="space-around" mt="16px" >
+                            {/* <Input variant="rounded" placeholder="04 / 15" fontSize="16px" alignItems="center" w="150px" mr={5} _light={{bg: "#fff"}}></Input>
+                            <Input variant="rounded" placeholder="15 : 03" fontSize="16px" w="150px" _light={{bg: "#fff"}}></Input> */}
+                            <Pressable onPress={() => showMode('date')}>
+                                <Text >{dateText}</Text>
+                            </Pressable>
+                            <Pressable onPress={() => showMode('time')}>
+                                <Text>{timeText}</Text>
+                            </Pressable>
+
+                            {show && (<DateTimePicker
+                                    testID='dateTimePicker'
+                                    value={date}
+                                    mode={mode}
+                                    is24Hour={true}
+                                    display='default'
+                                    onChange={onChange}
+                            />)}
+
+                        </HStack>
+                    </VStack>
                 <Actionsheet.Item>
                     <Text fontSize="20px" fontWeight="700" mt="12px" ml="8px" _light={{color: "#2E3943"}}>形狀</Text>
                     <Box display="flex" flexDir="row" justifyContent="center" mt="16px">
