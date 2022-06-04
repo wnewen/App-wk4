@@ -6,6 +6,7 @@ import DocumentData from "../json/documents.json";
 import { ColorMode } from "native-base";
 
 
+
 const background = "../image/background.png";
 const darkBackground = "../image/dark-background.png";
 

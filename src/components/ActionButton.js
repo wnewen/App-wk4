@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { Button, Actionsheet, useDisclose, Box, Pressable, Text, Input, Image, ScrollView, HStack, VStack } from 'native-base';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import {  Platform } from 'react-native';
+import {  Platform, TextComponent } from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
-import AddScreen from '../screens/AddScreen';
 
 const ActionButton = ({ list, navigation }) => {
   const { isOpen, onOpen, onClose } = useDisclose();
@@ -13,20 +12,37 @@ const ActionButton = ({ list, navigation }) => {
   const [show, setShow] = useState(false);
   const [dateText, setDateText] = useState('select date');
   const [timeText, setTimeText] = useState('select time');
+  const [testNumber, setTestNumber] = useState(0);
+
+//   const { poopairy } = useSelector((state) => state.poopairy);
 
 
-  const onChange = (event, selelctedDate) => {
+  const onChange = (event, selectedDate) => {
     const currentDate = selectedDate || date;
     // setShow(Platform.OS === 'ios');
     setDate(currentDate);
 
     let tempDate = new Date(currentDate);
-    let fDate = tempDate.getDate() + '/' + (tempDate.getMonth() + 1) + '/' + tempDate.getFullYear();
+    let fDate = tempDate.getFullYear() + '/' + tempDate.getMonth() + '/' + (tempDate.getDate() + 1);
+
+    //格式化時間
     let fTime = tempDate.getHours() + ' : ' + tempDate.getMinutes();
+    if(tempDate.getHours() < 10)
+    {
+        fTime = '0' + tempDate.getHours() + ' : ' + tempDate.getMinutes();
+    }
+    else if(tempDate.getMinutes() < 10)
+    {
+        fTime = tempDate.getHours() + ' : 0' + tempDate.getMinutes();
+    }
+    else if((tempDate.getHours() < 10) && (tempDate.getMinutes() < 10))
+    {
+        fTime = '0' + tempDate.getHours() + ' : 0' + tempDate.getMinutes();
+    }
+
     setDateText(fDate);
     setTimeText(fTime);
-
-    console.log(fDate + '(' + fTime + ')');
+    setShow(false);
   }
 
   const showMode = (currentMode) => {
@@ -60,26 +76,24 @@ const ActionButton = ({ list, navigation }) => {
                         <Text fontSize="20px" fontWeight="700" mt="20px" ml="8px" _light={{color: "#2E3943"}}>時間</Text>
                         
                         <HStack justifyContent="space-around" mt="16px" >
-                            {/* <Input variant="rounded" placeholder="04 / 15" fontSize="16px" alignItems="center" w="150px" mr={5} _light={{bg: "#fff"}}></Input>
-                            <Input variant="rounded" placeholder="15 : 03" fontSize="16px" w="150px" _light={{bg: "#fff"}}></Input> */}
                             <Pressable onPress={() => showMode('date')}>
-                                <Text >{dateText}</Text>
+                                <Text>日期: {dateText}</Text>
                             </Pressable>
                             <Pressable onPress={() => showMode('time')}>
-                                <Text>{timeText}</Text>
+                                <Text>時間: {timeText}</Text>
                             </Pressable>
-
-                            {show && (<DateTimePicker
-                                    testID='dateTimePicker'
-                                    value={date}
-                                    mode={mode}
-                                    is24Hour={true}
-                                    display='default'
-                                    onChange={onChange}
-                            />)}
-
                         </HStack>
                     </VStack>
+
+                    {show && (<DateTimePicker
+                            testID='dateTimePicker'
+                            value={date}
+                            mode={mode}
+                            is24Hour={true}
+                            display='default'
+                            onChange={onChange}
+                            accentColor="#FFF9EB"
+                    />)}
                 <Actionsheet.Item>
                     <Text fontSize="20px" fontWeight="700" mt="12px" ml="8px" _light={{color: "#2E3943"}}>形狀</Text>
                     <Box display="flex" flexDir="row" justifyContent="center" mt="16px">
