@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
-import { Button, Actionsheet, useDisclose, Box, Pressable, Text, Input, Image, ScrollView, HStack, VStack } from 'native-base';
+import { Button, Actionsheet, useDisclose, Box, Pressable, Text, Input, Image, ScrollView, HStack, VStack, NativeBaseProvider, center } from 'native-base';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {  Platform, TextComponent } from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
+import { Provider, useDispatch, useSelector } from 'react-redux';
+import { setDocument } from '../redux/documentSlice';
+import { selectDocument } from '../redux/documentSlice';
 
 const ActionButton = ({ list, navigation }) => {
   const { isOpen, onOpen, onClose } = useDisclose();
@@ -14,16 +17,20 @@ const ActionButton = ({ list, navigation }) => {
   const [timeText, setTimeText] = useState('select time');
   const [testNumber, setTestNumber] = useState(0);
 
-//   const { poopairy } = useSelector((state) => state.poopairy);
+  const doucument = useSelector(selectDocument);
+  const { document } = useSelector((state) => state.document);
+  const dispatch = useDispatch();
 
 
   const onChange = (event, selectedDate) => {
     const currentDate = selectedDate || date;
     // setShow(Platform.OS === 'ios');
+    setShow(false);
     setDate(currentDate);
 
     let tempDate = new Date(currentDate);
     let fDate = tempDate.getFullYear() + '/' + tempDate.getMonth() + '/' + (tempDate.getDate() + 1);
+    let sDate = tempDate.getMonth() + '/' + (tempDate.getDate() + 1);
 
     //格式化時間
     let fTime = tempDate.getHours() + ' : ' + tempDate.getMinutes();
@@ -42,13 +49,13 @@ const ActionButton = ({ list, navigation }) => {
 
     setDateText(fDate);
     setTimeText(fTime);
-    setShow(false);
   }
 
   const showMode = (currentMode) => {
     setShow(true);
     setMode(currentMode);
   }
+
 
 
 
@@ -97,34 +104,34 @@ const ActionButton = ({ list, navigation }) => {
                 <Actionsheet.Item>
                     <Text fontSize="20px" fontWeight="700" mt="12px" ml="8px" _light={{color: "#2E3943"}}>形狀</Text>
                     <Box display="flex" flexDir="row" justifyContent="center" mt="16px">
-                        <Box flexDir="column" alignItems="center">
+                        <Pressable flexDir="column" alignItems="center" onPress={() => {dispatch(setDocument({date: "4/5"}))}}>
                             <Image source={require('../image/poop1.jpg')} alt="shape1" borderRadius="300" width="45px" h="45px"/>
                             <Text fontSize="12px">顆粒球</Text>
-                        </Box>
-                        <Box flexDir="column" alignItems="center">
+                        </Pressable>
+                        <Pressable flexDir="column" alignItems="center">
                             <Image source={require('../image/poop2.jpg')} alt="shape1" borderRadius="300" width="45px" h="45px"/>
                             <Text fontSize="12px">長凹凸</Text>
-                        </Box>
-                        <Box flexDir="column" alignItems="center">
+                        </Pressable>
+                        <Pressable flexDir="column" alignItems="center">
                             <Image source={require('../image/poop3.jpg')} alt="shape1" borderRadius="300" width="45px" h="45px"/>
                             <Text fontSize="12px">長微裂</Text>
-                        </Box>
-                        <Box flexDir="column" alignItems="center">
+                        </Pressable>
+                        <Pressable flexDir="column" alignItems="center">
                             <Image source={require('../image/poop4.jpg')} alt="shape1" borderRadius="300" width="45px" h="45px"/>
                             <Text fontSize="12px">長滑順</Text>
-                        </Box>
-                        <Box flexDir="column" alignItems="center">
+                        </Pressable>
+                        <Pressable flexDir="column" alignItems="center">
                             <Image source={require('../image/poop5.jpg')} alt="shape1" borderRadius="300" width="45px" h="45px"/>
                             <Text fontSize="12px">柔軟大</Text>
-                        </Box>
-                        <Box flexDir="column" alignItems="center">
+                        </Pressable>
+                        <Pressable flexDir="column" alignItems="center">
                             <Image source={require('../image/poop6.jpg')} alt="shape1" borderRadius="300" width="45px" h="45px"/>
                             <Text fontSize="12px">鬆軟小</Text>
-                        </Box>
-                        <Box flexDir="column" alignItems="center">
+                        </Pressable>
+                        <Pressable flexDir="column" alignItems="center">
                             <Image source={require('../image/poop7.jpg')} alt="shape1" borderRadius="300" width="45px" h="45px"/>
                             <Text fontSize="12px">液體</Text>
-                        </Box>
+                        </Pressable>
 
                     </Box>
                 </Actionsheet.Item>
