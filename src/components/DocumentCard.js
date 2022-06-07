@@ -13,7 +13,7 @@ const DocumentCard = ({ documents, navigation }) => {
     <Box marginX={1} marginBottom={2} borderRadius={3} justifyContent="center" alignItems="center">
        
        <Pressable 
-          onPress={() => navigation.navigate('Detail', document)}
+          onPress={() => navigation.navigate('Detail', documents)}
         >
         <Box borderRadius="10px" w="320px" h="72px" display="flex" flexDirection="row" alignItems="center" justifyContent="space-around" marginTop="20px" _light={{bg: "#FFFFFF", shadow: "4"}} _dark={{bg: "#313131", borderColor: "#5D5D5D", borderWidth: "1px"}}>
           <Box flexDir="column">

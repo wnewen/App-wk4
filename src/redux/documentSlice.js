@@ -1,4 +1,5 @@
 import { createSlice, nanoid } from "@reduxjs/toolkit";
+import prePoopDocument from "../json/documents.json"
 
 // const initialState = [{ 
 //     index: 0,
@@ -17,20 +18,25 @@ const documentSlice = createSlice({
     name: 'document',
     initialState: {poopDocument: [
         {
-            date: 5341,
-            shape: 5346,
-            color: 454,
-            volume: 4154
+            id: 0,
+            date: "4/10 15:45",
+            shape: "長滑順",
+            color: "褐色",
+            volume: "適中"
         }
     ]},
 
     reducers: {
         setDocument: (state, action) => {
             state.poopDocument.push(action.payload);
-        }
+        },
+
+        deleteDocument: (state, action) => {
+            state.poopDocument = state.poopDocument.filter((document) => document.id !== action.payload.id);
+        },
     },
 });
 
 export const selectDocument = (state) => state.document.poopDocument;
-export const { setDocument } = documentSlice.actions; 
+export const { setDocument, deleteDocument } = documentSlice.actions; 
 export default documentSlice.reducer;

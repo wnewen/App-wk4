@@ -14,7 +14,7 @@ import AddScreen from '../screens/AddScreen';
 import { useColorMode } from "native-base";
 import NullScreen from '../screens/NullScreen';
 import ActionButton from '../components/ActionButton';
-import StatisticScreen from '../screens/StatisticScreen.tsx';
+import StatisticScreen from '../screens/StatisticScreen';
 
 
 const Stack = createNativeStackNavigator();

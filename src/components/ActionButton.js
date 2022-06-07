@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Actionsheet, useDisclose, Box, Pressable, Text, Input, Image, ScrollView, HStack, VStack, NativeBaseProvider, center } from 'native-base';
+import { Button, Actionsheet, useDisclose, Box, Pressable, Text, Input, Image, ScrollView, HStack, VStack, NativeBaseProvider, center, Center } from 'native-base';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {  Platform, TextComponent } from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
@@ -13,8 +13,8 @@ const ActionButton = ({ list, navigation }) => {
   const [date, setDate] = useState(new Date());
   const [mode, setMode] = useState('date');
   const [show, setShow] = useState(false);
-  const [dateText, setDateText] = useState('select date');
-  const [timeText, setTimeText] = useState('select time');
+  const [dateText, setDateText] = useState('...');
+  const [timeText, setTimeText] = useState('...');
   const [poopDate, setPoopDate] = useState('');
   const [poopShape, setPoopShape] = useState('');
   const [poopColor, setPoopColor] = useState('');
@@ -98,12 +98,12 @@ const ActionButton = ({ list, navigation }) => {
             <Box>
                 <MaterialCommunityIcons name="plus" color="#FFEBB9" size={40} ></MaterialCommunityIcons>
             </Box>
-         </Pressable>
+        </Pressable>
          
         {/* <Button onPress={onOpen}>Actionsheet</Button> */}
 
         <Actionsheet isOpen={isOpen} onClose={onClose}>
-            <Actionsheet.Content _light={{bg: "#FFFCF4"}} >
+            <Actionsheet.Content _light={{bg: "#FFFCF4"}} _dark={{bg: "#414141"}} >
                 <ScrollView>
                 <Actionsheet.Header></Actionsheet.Header>
 
@@ -111,11 +111,15 @@ const ActionButton = ({ list, navigation }) => {
                         <Text fontSize="20px" fontWeight="700" mt="20px" ml="8px" _light={{color: "#2E3943"}}>時間</Text>
                         
                         <HStack justifyContent="space-around" mt="16px" >
-                            <Pressable onPress={() => showMode('date')}>
-                                <Text>日期: {dateText}</Text>
+                            <Pressable display="flex" flexDir="column" onPress={() => showMode('date')}>
+                                <Center h="44px" w="160px" borderRadius="20px"  justifyContent="center" _light={{bg: "#ffffff", color: "#2E3943"}} _dark={{bg: "#313131", color: "#FFFCF4"}}>
+                                    <Text fontSize="20px" textAlign="center" letterSpacing="1.5px">{dateText}</Text>
+                                </Center>
                             </Pressable>
                             <Pressable onPress={() => showMode('time')}>
-                                <Text>時間: {timeText}</Text>
+                            <Center h="44px" w="160px" borderRadius="20px"  justifyContent="center" _light={{bg: "#ffffff", color: "#2E3943"}} _dark={{bg: "#313131", color: "#FFFCF4"}}>
+                                    <Text fontSize="20px" textAlign="center" letterSpacing="1.5px">{timeText}</Text>
+                                </Center>
                             </Pressable>
                         </HStack>
                     </VStack>
@@ -179,18 +183,30 @@ const ActionButton = ({ list, navigation }) => {
                         <Pressable borderRadius="300" bg="#9F9595" width="45px" h="45px" alignItems="center" justifyContent="center" mr="4px"><Text color="white" onPress={() => colorKeeper('灰白色')}>灰白色</Text></Pressable>
                     </HStack>
                 </VStack>
-                <Actionsheet.Item>
+                <VStack>
                     <Text fontSize="20px" fontWeight="700" mt="12px" ml="8px" _light={{color: "#2E3943"}}>排便量</Text>
-                    <Box display="flex" flexDir="row" justifyContent="center" mt="16px" ml="8px">
-                        <Pressable _light={{bg: "#FFFCF4"}} _dark={{bg: "#414141"}}><Text fontSize="16px" _light={{color: "#2E3943"}} onPress={() => volumeKeeper('量少')}>量少</Text></Pressable>
-                        <Pressable _light={{bg: "#FFFCF4"}} _dark={{bg: "#414141"}}><Text fontSize="16px" _light={{color: "#2E3943"}} onPress={() => volumeKeeper('適中')}>適中</Text></Pressable>
-                        <Pressable _light={{bg: "#FFFCF4"}} _dark={{bg: "#414141"}}><Text fontSize="16px" _light={{color: "#2E3943"}} onPress={() => volumeKeeper('量多')}>量多</Text></Pressable>
-                    </Box>
-                </Actionsheet.Item>
+                    <HStack display="flex" flexDir="row" justifyContent="space-between" mt="16px" ml="8px">
+                        <Pressable _light={{bg: "#FFFFFF"}} _dark={{bg: "#313131"}} onPress={() => volumeKeeper('量少')}>
+                            <Center h="45px" w="80px" borderRadius="20px">
+                                <Text fontSize="16px"_light={{color: "#2E3943"}}>量少</Text>
+                            </Center>
+                        </Pressable>
+                        <Pressable _light={{bg: "#FFFFFF"}} _dark={{bg: "#313131"}} onPress={() => volumeKeeper('適中')}>
+                            <Center h="45px" w="80px" borderRadius="20px">
+                                <Text fontSize="16px" _light={{color: "#2E3943"}}>適中</Text>
+                            </Center>
+                         </Pressable>
+                        <Pressable _light={{bg: "#FFFFFF"}} _dark={{bg: "#313131"}} onPress={() => volumeKeeper('量多')}>
+                            <Center h="45px" w="80px" borderRadius="20px">
+                                <Text fontSize="16px" _light={{color: "#2E3943"}}>量多</Text>
+                            </Center>
+                        </Pressable>
+                    </HStack>
+                </VStack>
 
                 <Actionsheet.Footer alignSelf="center" justifyContent="center"  _light={{bg: "#FFFCF4"}}>
                     <Pressable borderRadius="full" h="60px" w="320px" alignSelf="center" justifyContent="center" mt="24px" onPress={sendDocument} _light={{bg: "#FFE08F"}} _dark={{bg: "#1F1F1F"}} >
-                        <Text fontSize="32px" fontWeight="700" alignSelf="center" _light={{color: "#2E3943"}} _dark={{color: "#FFFCF4"}}>完成
+                        <Text fontSize="32px" fontWeight="700" alignSelf="center" _light={{ color: "#2E3943"}} _dark={{bg: "#313131", color: "#FFFCF4"}}>完成
                         </Text>
                     </Pressable>
                 </Actionsheet.Footer>
