@@ -22,7 +22,14 @@ const documentSlice = createSlice({
             date: "4/10 15:45",
             shape: "長滑順",
             color: "褐色",
-            volume: "適中"
+            volume: "適中",
+            shape1: 0,
+            shape2: 0,
+            shape3: 0,
+            shape4: 0,
+            shape5: 0,
+            shape6: 0,
+            shape7: 0,
         }
     ]},
 

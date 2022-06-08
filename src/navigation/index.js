@@ -253,7 +253,7 @@ const HomeStack = () => {
           title: "",
           headerShadowVisible: false,
           headerStyle: {
-            backgroundColor: '#fff',
+            backgroundColor: '#FFFCF4',
             backImage: "https://github.com/wnewen/App-wk3-photoes/blob/main/btn_back.png?raw=true"
           },
           headerTintColor: '#000',
@@ -274,13 +274,13 @@ const HomeStack = () => {
             </Pressable>
           ),
 
-          headerRight: () => (
-              <TouchableOpacity onPress={() => toggleFunction()}>
-                  <Text>{toggle ? <MaterialCommunityIcons name="bookmark-outline" color="black" size={25} />:
-                                  <MaterialCommunityIcons name="bookmark" color="#6200EE" size={25} />}
-                  </Text>
-              </TouchableOpacity>
-          ),
+          // headerRight: () => (
+          //     <TouchableOpacity onPress={() => toggleFunction()}>
+          //         <Text>{toggle ? <MaterialCommunityIcons name="bookmark-outline" color="black" size={25} />:
+          //                         <MaterialCommunityIcons name="bookmark" color="#6200EE" size={25} />}
+          //         </Text>
+          //     </TouchableOpacity>
+          // ),
 
         })}
       />
